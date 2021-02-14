@@ -1,37 +1,27 @@
 package com.kodilla.testing;
 
 import com.kodilla.testing.calculator.Calculator;
-import com.kodilla.testing.user.SimpleUser;
+import com.kodilla.testing.collection.OddNumbersExterminator;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class TestingMain {
     public static void main(String[] args) {
-        System.out.println("Moduł 6. Wprowadzenie do testowania oprogramowania");
 
-        SimpleUser simpleUser = new SimpleUser("theForumUser");
-
-        String result = simpleUser.getUsername();
-
-        if(result.equals("theForumUser")){
-            System.out.println("test OK");
-        }else{
-            System.out.println("Error!");
-        }
-
-        Calculator calculator = new Calculator(15,8);
-        int calculation1 = calculator.subtract();
-
-        if(calculation1 == calculator.getA() - calculator.getB()) {
-            System.out.println("Subtraction test OK");
-        }else {
-            System.out.println("Subtraction error");
-        }
-
-        int calculation2 = calculator.add();
-
-        if(calculation2 == calculator.getA() + calculator.getB()) {
-            System.out.println("Addition test OK");
-        }else {
-            System.out.println("Addition error");
-        }
+//        List<Integer> numbers = new ArrayList<Integer>();
+//        List <Integer> evenNumbers = new ArrayList<>();
+//
+//        OddNumbersExterminator ext = new OddNumbersExterminator();
+//        ext.completeList(numbers);
+//
+//        ext.exterminate(numbers,evenNumbers);
+//        System.out.println(numbers.size());
+//        System.out.println(evenNumbers.size());
+//        int obj = evenNumbers.get(10);
+//        System.out.println(obj);
+//        int wynik = obj/2;
+//        System.out.println(wynik);
     }
 }
