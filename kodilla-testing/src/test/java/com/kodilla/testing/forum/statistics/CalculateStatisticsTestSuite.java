@@ -57,6 +57,7 @@ public class CalculateStatisticsTestSuite {
 
         //Given
         List<ForumUser> resultForumUserList = generateListOfNUsers(0);
+        List<String> resultForumUsersNames = new ArrayList<>();
         CalculateStatistics calculatorOfStatistics = new CalculateStatistics(statisticsMock);
 
         //When

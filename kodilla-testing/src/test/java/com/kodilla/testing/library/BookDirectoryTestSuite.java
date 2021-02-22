@@ -99,7 +99,7 @@ public class BookDirectoryTestSuite {
     }
 
     @Test
-    public void testListBooksInHandsOf0() {
+    public void testListBooksInHandsOf() {
 
         //Given
         LibraryUser libraryUser = new LibraryUser("Marek", "Kowalski", 982546103);

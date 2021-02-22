@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class BookLibrary {
 
     private LibraryDatabase libraryDatabase;
-    private int n;
+
 
     public BookLibrary(LibraryDatabase libraryDatabase) {
         this.libraryDatabase = libraryDatabase;
@@ -24,14 +24,9 @@ public class BookLibrary {
 
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
 
-        List<Book> booksInHandsOf = new ArrayList<Book>();
-        List<Book> bookList = new ArrayList<Book>(n);
-        if (n > 0 && n < bookList.size()) {
-            for (Book book : bookList) {
-                booksInHandsOf.add(book);
 
-            }
-        }
-        return booksInHandsOf;
+        List<Book> resultListBooksInHandsOf = libraryDatabase.listBooksInHandsOf(libraryUser);
+
+        return resultListBooksInHandsOf;
     }
 }
