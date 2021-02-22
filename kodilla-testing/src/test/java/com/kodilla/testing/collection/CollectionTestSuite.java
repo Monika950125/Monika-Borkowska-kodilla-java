@@ -1,5 +1,6 @@
 package com.kodilla.testing.collection;
 
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
@@ -8,9 +9,6 @@ import org.junit.jupiter.api.*;
 
 
 public class CollectionTestSuite {
-
-    List<Integer> numbers = new ArrayList<Integer>();
-    List <Integer> evenNumbers = new ArrayList<>();
 
 
     @BeforeEach
@@ -30,16 +28,15 @@ public class CollectionTestSuite {
     void testOddNumbersExterminatorEmptyList(){
 
         //Given
+        List<Integer> numbers = new ArrayList<Integer>();
         OddNumbersExterminator ext = new OddNumbersExterminator();
 
-
         //When
-        ext.exterminate(numbers, evenNumbers);
+       List<Integer> evenNumbers = ext.exterminate(numbers);
         int result = evenNumbers.size();
 
         //Then
         Assertions.assertEquals(0, result);
-
 
     }
 
@@ -50,20 +47,21 @@ public class CollectionTestSuite {
     void testOddNumbersExterminatorNormalList(){
 
         //Given
+        List<Integer> numbers = new ArrayList<Integer>();
         OddNumbersExterminator ext = new OddNumbersExterminator();
+        numbers.add(52);
+        numbers.add(2);
+        numbers.add(27);
 
         //When
-        ext.completeList(numbers);
-        ext.exterminate(numbers, evenNumbers);
+       List<Integer> evenNumbers = ext.exterminate(numbers);
         int result = evenNumbers.size();
-        int modulo = 0;
-        for(Integer element: evenNumbers){
-            modulo = element % 2;
-        }
+        List<Integer> expectedNumbers = Arrays.asList(52,2);
+
 
         //Then
-        Assertions.assertEquals(50, result);
-        Assertions.assertEquals(0, modulo);
+        Assertions.assertEquals(2, result);
+        Assertions.assertEquals(expectedNumbers, evenNumbers);
 
 
     }
