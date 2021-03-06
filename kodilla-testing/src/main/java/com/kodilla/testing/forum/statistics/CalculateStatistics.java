@@ -1,88 +1,69 @@
 package com.kodilla.testing.forum.statistics;
 
-import com.kodilla.testing.forum.ForumComment;
-import com.kodilla.testing.forum.ForumPost;
-import com.kodilla.testing.forum.ForumUser;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class CalculateStatistics {
 
-    private List<ForumUser> forumUsers = new ArrayList<>();
-    private List<ForumPost> posts = new ArrayList<>();
-    private List<ForumComment> comments = new LinkedList<>();
-    private int postsCount;
-    private int commentsCount;
-    private double averageOfPosts;
-    private double averageOfComment;
-    private double averageOfCommentPerPost;
-    private Statistics calculatorOfStatistics;
+    private Statistics statistics;
 
+    private double averageOfCommentsPerUSer;
+    private double averageOfPostsPerUser;
+    private double averageOfCommentsPerPost;
 
-    public CalculateStatistics(Statistics calculatorOfStatistics) {
-        this.calculatorOfStatistics = calculatorOfStatistics;
+    public CalculateStatistics(Statistics statistics) {
+        this.statistics = statistics;
     }
 
-    public Statistics getCalculatorOfStatistics() {
-        return calculatorOfStatistics;
+    List<String> usersNames() {
+        List<String> userNames = statistics.usersNames();
+        return userNames;
     }
 
-    public List<String> usersNames(List<ForumUser> forumUsers) {
-        List<String> usersNames = new ArrayList<>();
-        for (ForumUser forumUser : forumUsers) {
-            usersNames.add(forumUser.getRealName());
-        }
-        return usersNames;
-    }
+    int postsCount() {
+        int postsCount = statistics.postsCount();
 
-    public int postsCount(List<ForumPost> posts) {
-        for (int i = 0; i == forumUsers.size(); i++) {
-            int size = posts.size();
-            int thisUserPostsCount = size;
-            postsCount = postsCount + thisUserPostsCount;
-        }
         return postsCount;
     }
 
-    public int commentsCount(List<ForumComment> comments) {
+    int commentsCount() {
+        int commentsCount = statistics.commentsCount();
 
-        for (int n = 0; n == forumUsers.size(); n++) {
-            int size = comments.size();
-            int thisUserCommentsCount = size;
-            commentsCount = commentsCount + thisUserCommentsCount;
-        }
         return commentsCount;
     }
 
-    public double averageOfPostPerUser() {
+    public void calculateAdvStatistics(Statistics statistics) {
+        double size = statistics.usersNames().size();
+        double postsCount = statistics.postsCount();
+        double commentsCount = statistics.commentsCount();
 
-        averageOfPosts = postsCount(posts) / forumUsers.size();
-        return averageOfPosts;
+        if (size == 0 && postsCount == 0) {
+            averageOfCommentsPerPost = 0.0;
+            averageOfPostsPerUser = 0.0;
+            averageOfCommentsPerUSer = 0.0;
+        }else if(size > 0 && postsCount == 0){
+            averageOfCommentsPerUSer = commentsCount / size;
+            averageOfPostsPerUser = postsCount / size;
+            averageOfCommentsPerPost = 0;
+        }else if(size == 0 && postsCount > 0){
+            averageOfCommentsPerPost = commentsCount / postsCount;
+            averageOfPostsPerUser = 0.0;
+            averageOfCommentsPerUSer = 0.0;
+        }else if(size > 0 && postsCount > 0){
+            averageOfCommentsPerUSer = commentsCount / size;
+            averageOfPostsPerUser = postsCount / size;
+            averageOfCommentsPerPost = commentsCount / postsCount;
+        }
     }
 
-    public double averageOfCommentPerUser() {
-
-        averageOfComment = commentsCount(comments) / forumUsers.size();
-        return averageOfComment;
+    public double getAverageOfCommentsPerUSer() {
+        return averageOfCommentsPerUSer;
     }
 
-
-    public double averageOfCommentPerPost() {
-
-        averageOfCommentPerPost = commentsCount(comments) / postsCount(posts);
-        return averageOfCommentPerPost;
+    public double getAverageOfCommentsPerPost() {
+        return averageOfCommentsPerPost;
     }
 
-    public void calculateAdvStatistics() {
-
-        List<String> usersNames = usersNames(forumUsers);
-        postsCount = postsCount(posts);
-        commentsCount = commentsCount(comments);
-        averageOfPosts = averageOfPostPerUser();
-        averageOfComment = averageOfCommentPerUser();
-        averageOfCommentPerPost = averageOfCommentPerPost();
+    public double getAverageOfPostsPerUser() {
+        return averageOfPostsPerUser;
     }
-
 }

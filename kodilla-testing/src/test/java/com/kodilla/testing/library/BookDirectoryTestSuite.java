@@ -32,9 +32,7 @@ public class BookDirectoryTestSuite {
     @Test
     public void testListBooksWithConditionReturnList() {
 
-
         //Given
-
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         List<Book> resultListOfBooks = new ArrayList<>();
         Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
