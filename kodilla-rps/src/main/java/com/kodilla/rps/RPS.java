@@ -7,11 +7,10 @@ public class RPS {
 
     private int computerMove;
     private int playerMove;
-    private String gameResult;
     private String playerAttribute;
     private String computerAttribute;
 
-    public int chooseMove() {
+    public void chooseMove() {
         Scanner scan = new Scanner(System.in);
         System.out.println("\nChoose your move:");
         playerMove = scan.nextInt();
@@ -19,17 +18,18 @@ public class RPS {
             playerAttribute = "Rock";
         } else if (playerMove == 2) {
             playerAttribute = "Paper";
-        } else {
+        } else if(playerMove == 3){
             playerAttribute = "Scissors";
+        }else{
+            playerAttribute = "You have to choose a number from 1 to 3";
         }
-        return playerMove;
     }
 
     public String getPlayerAttribute() {
         return playerAttribute;
     }
 
-    public int computerMove() {
+    public void computerMove() {
         Random random = new Random();
         computerMove = 0;
         while (computerMove <= 0) {
@@ -42,7 +42,6 @@ public class RPS {
         } else {
             computerAttribute = "Scissors";
         }
-        return computerMove;
     }
 
     public String getComputerAttribute() {
@@ -50,7 +49,7 @@ public class RPS {
     }
 
     public String compareTheMovements() {
-        gameResult = "";
+        String gameResult = "";
         if (playerMove == computerMove) {
             gameResult = "Draw";
         } else if (playerMove == 1 && computerMove == 2 || playerMove == 2 && computerMove == 3 ||
@@ -58,7 +57,7 @@ public class RPS {
             gameResult = "Defeat";
         } else if (playerMove == 2 && computerMove == 1 || playerMove == 3 && computerMove == 2 ||
                 playerMove == 1 && computerMove == 3) {
-            gameResult = "Your win";
+            gameResult = "You win";
         }
         return gameResult;
     }

@@ -40,7 +40,7 @@ public class ExceptionModuleRunner {
         }
 
         //8.4 Flight
-        Flight flight = new Flight("Paris", "Brazil");
+        Flight flight = new Flight("Paris", "Dubrovnik");
 
         SearchFlights searcher = new SearchFlights();
         try{

@@ -13,7 +13,7 @@ public class RpsRunner {
         System.out.println("Give your name:");
         String playerName = scanner.nextLine();
         System.out.println("Give the quantity of won rounds necessary to win the game:");
-        int quantityOfRounds = scanner.nextInt();
+       int quantityOfRounds = scanner.nextInt();
 
         System.out.println("Information on how to operate the game:");
         System.out.println("Press the \"1\" key to choose \"Rock\" \nPress the \"2\" key to choose \"Paper\" \n" +
@@ -30,30 +30,29 @@ public class RpsRunner {
             String result = game.compareTheMovements();
             System.out.println(result);
 
-            if (result.equals("Your win")) {
+            if ("You win".equals(result)) {
                 quantityOfWonRounds = quantityOfWonRounds + 1;
-//                System.out.println("Total quantity of winnings: " + quantityOfWonRounds);
                 if (quantityOfWonRounds == quantityOfRounds) {
-                    System.out.println("Congratulations " + playerName + " you won the game!!!\n");
+                    System.out.println("\nCongratulations " + playerName + ", you won game!!!\n");
                     System.out.println("Do you want play again?");
                     if (scanner.next().equals("n")) {
-                        end = false;
-                        System.out.println("Give the quantity of won rounds necessary to win the game:");
+                        System.out.println("Give the quantity of won rounds necessary to win game:");
                         quantityOfRounds = scanner.nextInt();
+                        quantityOfWonRounds = 0;
                     } else if (scanner.next().equals("x")) {
                         end = true;
                     }
                 }
-            } else if (result.equals("Defeat")) {
+            } else if ("Defeat".equals(result)) {
                 quantityOfDefeatRounds = quantityOfDefeatRounds + 1;
-//                System.out.println("Total quantity of defeats: " + quantityOfDefeatRounds);
                 if (quantityOfDefeatRounds == quantityOfRounds) {
-                    System.out.println("Unfortunately " + playerName + " you lost\n");
+                    System.out.println("\nUnfortunately " + playerName + ", you lost\n");
                     System.out.println("Do you want play again?");
                     if (scanner.next().equals("n")) {
-                        end = false;
                         System.out.println("Give the quantity of won rounds necessary to win the game:");
                         quantityOfRounds = scanner.nextInt();
+                        quantityOfDefeatRounds = 0;
+                        scanner.nextLine();
                     } else if (scanner.next().equals("x")) {
                         end = true;
                     }
