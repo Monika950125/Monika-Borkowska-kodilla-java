@@ -17,8 +17,18 @@ public class BoardTestSuite {
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
         Board board = context.getBean(Board.class);
 
-        //When & Then
-        board.showTheBoard();
+        //When
+        List<String> list1 = board.getDoneList().getTasksList();
+        int size = list1.size();
+        List<String> list2 = board.getInProgressList().getTasksList();
+        int size2 = list2.size();
+        List<String> list3 = board.getToDoList().getTasksList();
+        int size3 = list3.size();
+
+        //Then
+        Assertions.assertEquals(0, size);
+        Assertions.assertEquals(0, size2);
+        Assertions.assertEquals(0, size3);
     }
 
     @Test

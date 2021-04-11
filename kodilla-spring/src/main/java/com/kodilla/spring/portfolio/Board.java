@@ -14,9 +14,9 @@ public class Board {
         this.doneList = doneList;
     }
 
-    public void showTheBoard() {
-        System.out.println("Show the board:\n" + toDoList.getTasksList() + "\n"
-                + inProgressList.getTasksList() + "\n" + doneList.getTasksList());
+    public String showTheBoard() {
+     return "Show the board:\n" + toDoList.getTasksList() + "\n"
+                + inProgressList.getTasksList() + "\n" + doneList.getTasksList();
     }
 
     public TaskList getToDoList() {
