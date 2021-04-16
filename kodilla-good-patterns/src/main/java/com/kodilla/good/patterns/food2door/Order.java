@@ -3,25 +3,25 @@ package com.kodilla.good.patterns.food2door;
 public class Order {
 
     private final Supplier supplier;
-    private final String productType;
-    private final int productQuantity;
+//    private final int quantity;
+    private final String typeOfProduct;
 
-    public Order(Supplier supplier, String productType, int productQuantity) {
+
+    public Order(Supplier supplier, String typeOfProduct) {
         this.supplier = supplier;
-        this.productType = productType;
-        this.productQuantity = productQuantity;
+//        this.quantity = quantity;
+        this.typeOfProduct = typeOfProduct;
     }
 
     public Supplier getSupplier() {
         return supplier;
     }
 
-    public String getProductType() {
-        return productType;
-    }
+//    public int getQuantity() {
+//        return quantity;
+//    }
 
-    public int getProductQuantity() {
-        return productQuantity;
+    public String getTypeOfProduct() {
+        return typeOfProduct;
     }
-
 }

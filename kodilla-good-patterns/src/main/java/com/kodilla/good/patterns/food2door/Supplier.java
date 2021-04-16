@@ -3,4 +3,7 @@ package com.kodilla.good.patterns.food2door;
 public interface Supplier {
 
     String name();
+
+    String process(Order order);
+
 }

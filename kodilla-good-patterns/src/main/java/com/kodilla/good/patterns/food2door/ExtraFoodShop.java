@@ -1,6 +1,6 @@
 package com.kodilla.good.patterns.food2door;
 
-public class ExtraFoodShop implements Supplier, ExecutionOfOrder {
+public class ExtraFoodShop implements Supplier {
 
     private String name;
 
@@ -12,7 +12,7 @@ public class ExtraFoodShop implements Supplier, ExecutionOfOrder {
         return name;
     }
 
-    public String process() {
+    public String process(Order order) {
 
         return "";
     }
