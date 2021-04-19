@@ -29,6 +29,7 @@ public class TaskFactory {
     }
 
     public Map<Task, Boolean> putTaskInMap(Task task) {
+        task.executeTask();
         Boolean isExecuted = task.isTaskExecuted();
         tasks.put(task, isExecuted);
         return tasks;
