@@ -6,12 +6,12 @@ public class Book {
 
     final String title;
     final String author;
-//    final LocalDate publicationDate;
+    final LocalDate publicationDate;
 
-    public Book(final String title, final String author) {
+    public Book(final String title, final String author, final LocalDate publicationDate) {
         this.title = title;
         this.author = author;
-//        this.publicationDate = LocalDate.of(year, month, dayOfMonth);
+        this.publicationDate = publicationDate;
     }
 
     public String getTitle() {
@@ -22,16 +22,16 @@ public class Book {
         return author;
     }
 
-//    public LocalDate getPublicationDate() {
-//        return publicationDate;
-//    }
+    public LocalDate getPublicationDate() {
+        return publicationDate;
+    }
 
     @Override
     public String toString() {
-        return "Book "+
-                "title = '" + title + "'" +
-                ", author = '" + author + "' \n";
-//                ", publicationDate=" + publicationDate +
-//                '}';
+        return "Book{" +
+                "title = '" + title + '\'' +
+                ", author = '" + author + '\'' +
+                ", publicationDate = " + publicationDate +
+                '}';
     }
 }

@@ -1,6 +1,7 @@
 package com.kodilla.patterns.prototype.library;
 
 import com.kodilla.patterns.prototype.Prototype;
+import com.kodilla.patterns.prototype.Task;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -29,7 +30,11 @@ public class Library extends Prototype<Library> {
 
     @Override
     public String toString() {
-        return "Library " + name + '\n' + books + '\n';
+        String s = "   Library [" + name + "]";
+        for (Book book : books) {
+            s = s + "\n" + book.toString();
+        }
+        return s + "\n";
     }
 
     @Override
@@ -53,7 +58,7 @@ public class Library extends Prototype<Library> {
         Library clonedLibrary = super.clone();
         clonedLibrary.books = new HashSet<>();
         for (Book book : books) {
-            Book clonedBook = new Book(book.title, book.author);
+            Book clonedBook = new Book(book.title, book.author, book.publicationDate);
             clonedLibrary.getBooks().add(clonedBook);
         }
         return clonedLibrary;
