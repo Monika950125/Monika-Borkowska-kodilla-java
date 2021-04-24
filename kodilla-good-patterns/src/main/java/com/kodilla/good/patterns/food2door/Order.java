@@ -2,19 +2,14 @@ package com.kodilla.good.patterns.food2door;
 
 public class Order {
 
-    private final Supplier supplier;
     private final int quantity;
     private final String typeOfProduct;
+    private final int orderNumber;
 
-
-    public Order(Supplier supplier, String typeOfProduct, int quantity) {
-        this.supplier = supplier;
+    public Order(String typeOfProduct, int quantity, int orderNumber) {
         this.quantity = quantity;
         this.typeOfProduct = typeOfProduct;
-    }
-
-    public Supplier getSupplier() {
-        return supplier;
+        this.orderNumber = orderNumber;
     }
 
     public int getQuantity() {
@@ -25,7 +20,7 @@ public class Order {
         return typeOfProduct;
     }
 
-    public void executeOrder(Order order){
-          supplier.process(order);
+    public int getOrderNumber() {
+        return orderNumber;
     }
 }

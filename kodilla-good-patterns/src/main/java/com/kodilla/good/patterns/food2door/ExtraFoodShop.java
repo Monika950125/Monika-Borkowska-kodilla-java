@@ -10,17 +10,16 @@ public class ExtraFoodShop implements Supplier {
 
     public ExtraFoodShop() {
         this.name = "Extra Food Shop";
+        putProductsInMap();
     }
 
-    public Map<String, Integer> putProductsInMap(String product, Integer quantityOfProducts) {
+    private void putProductsInMap() {
         depotOfExtraFoodShop.put("caviar", 150);
         depotOfExtraFoodShop.put("salmon", 4002);
         depotOfExtraFoodShop.put("prawn", 1256);
-        depotOfExtraFoodShop.put(product, quantityOfProducts);
-        return depotOfExtraFoodShop;
     }
 
-    public void updateDepotStatus(String product, Integer quantityOfProducts) {
+    private void updateDepotStatus(String product, Integer quantityOfProducts) {
         Integer depotStatus = depotOfExtraFoodShop.get(product) - quantityOfProducts;
         depotOfExtraFoodShop.put(product, depotStatus);
     }
@@ -30,10 +29,14 @@ public class ExtraFoodShop implements Supplier {
     }
 
     public void process(Order order) {
-        updateDepotStatus(order.getTypeOfProduct(), order.getQuantity());
-        System.out.println("You chose the ExtraFoodShop");
-        System.out.println("You ordered " + order.getTypeOfProduct() + " in quantity " + order.getQuantity());
-        System.out.println("The order has been transferred for execution");
-        System.out.println("Thank you and come back again");
+        if (depotOfExtraFoodShop.containsKey(order.getTypeOfProduct()) && depotOfExtraFoodShop.get(order.getTypeOfProduct()) >= order.getQuantity()) {
+            updateDepotStatus(order.getTypeOfProduct(), order.getQuantity());
+            System.out.println("Your order number is: " + order.getOrderNumber());
+            System.out.println("You ordered " + order.getTypeOfProduct() + " in quantity " + order.getQuantity());
+            System.out.println("The order has been transferred for execution");
+            System.out.println("Thank you and come back again");
+        } else {
+            System.out.println("The selected product is not available.");
+        }
     }
 }

@@ -10,17 +10,16 @@ public class HealthyShop implements Supplier {
 
     public HealthyShop() {
         this.name = "Healthy Shop";
+        putProductsInMap();
     }
 
-    public Map<String, Integer> putProductsInMap(String product, Integer quantityOfProducts) {
+    private void putProductsInMap() {
         depotOfHealthyShop.put("tomato", 1000);
-        depotOfHealthyShop.put("cucumber", 1500);
+        depotOfHealthyShop.put("cucumber", 4000);
         depotOfHealthyShop.put("radish", 4200);
-        depotOfHealthyShop.put(product, quantityOfProducts);
-        return depotOfHealthyShop;
     }
 
-    public void updateDepotStatus(String product, Integer quantityOfProducts) {
+    private void updateDepotStatus(String product, Integer quantityOfProducts) {
         Integer depotStatus = depotOfHealthyShop.get(product) - quantityOfProducts;
         depotOfHealthyShop.put(product, depotStatus);
     }
@@ -30,10 +29,14 @@ public class HealthyShop implements Supplier {
     }
 
     public void process(Order order) {
-        updateDepotStatus(order.getTypeOfProduct(), order.getQuantity());
-        System.out.println("You chose the HealthyShop");
-        System.out.println("You ordered " + order.getTypeOfProduct() + " in quantity " + order.getQuantity());
-        System.out.println("The order has been transferred for execution");
-        System.out.println("Thank you for using our services");
+        if(depotOfHealthyShop.containsKey(order.getTypeOfProduct()) && depotOfHealthyShop.get(order.getTypeOfProduct()) >= order.getQuantity()) {
+            updateDepotStatus(order.getTypeOfProduct(), order.getQuantity());
+            System.out.println("Your order number is: " + order.getOrderNumber());
+            System.out.println("You ordered " + order.getTypeOfProduct() + " in quantity " + order.getQuantity());
+            System.out.println("The order has been transferred for execution");
+            System.out.println("Thank you for using the services \"Healthy Shop\"");
+        }else {
+            System.out.println("The selected product is not available.");
+        }
     }
 }
