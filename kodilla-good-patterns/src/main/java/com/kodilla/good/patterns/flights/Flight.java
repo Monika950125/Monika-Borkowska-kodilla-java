@@ -3,6 +3,7 @@ package com.kodilla.good.patterns.flights;
 import java.util.Objects;
 
 public class Flight {
+
     private final String departureAirport;
     private final String arrivalAirport;
 

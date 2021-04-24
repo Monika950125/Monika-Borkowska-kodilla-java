@@ -1,13 +1,14 @@
 package com.kodilla.good.patterns.flights;
 
 public class FlightSearcherRunner {
+
     public static void main(String[] args) {
+
         FlightBase flightBase = new FlightBase();
-        flightBase.addFlightsToBase();
-        Flight flight = new Flight("Warszawa", "Waszyngton");
-//        System.out.println(flightBase.findConnectingFlight(flight));
-//        flightBase.addFlightInList(flight);
-
-
+        Flight flight = new Flight("Piza", "Werona");
+        System.out.println(flightBase.findDirectFlight(flight));
+        System.out.println(flightBase.findConnectingFlight("Warszawa", "Waszyngton"));
+        System.out.println(flightBase.findAllFlightsToThisCity("Piza"));
+        System.out.println(flightBase.findAllFlightsFromThisCity("Paryż"));
     }
 }

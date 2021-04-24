@@ -6,12 +6,12 @@ import java.util.stream.Collectors;
 public class FlightBase {
 
     private final List<Flight> base = new ArrayList<>();
-    boolean isThereAFlightInBase = false;
-    String departureAirport;
-    String arrivalAirport;
 
+    public FlightBase() {
+        addFlightsToBase();
+    }
 
-    public List<Flight> addFlightsToBase() {
+    private List<Flight> addFlightsToBase() {
         base.add(new Flight("Dubrownik", "Piza"));
         base.add(new Flight("Szczecin", "Zielona Góra"));
         base.add(new Flight("Warszawa", "Moskwa"));
@@ -19,51 +19,50 @@ public class FlightBase {
         base.add(new Flight("Paryż", "Waszyngton"));
         base.add(new Flight("Warszawa", "Londyn"));
         base.add(new Flight("Londyn", "San Francisco"));
+        base.add(new Flight("Londyn", "Waszyngton"));
         base.add(new Flight("Piza", "Werona"));
-        return base;
-    }
-
-    public List<Flight> getBase() {
-        return base;
-    }
-
-
-    public List<Flight> addFlightInList(Flight flight) {
-        base.add(flight);
+        base.add(new Flight("Paryż", "Moskwa"));
         return base;
     }
 
     public Set<Flight> findDirectFlight(Flight flight) {
-        Set<Flight> result = new HashSet<>();
-        result = base.stream()
+        return base.stream()
                 .filter(flight1 -> flight1.equals(flight))
                 .collect(Collectors.toSet());
-
-        return result;
     }
 
     public Set<Flight> findConnectingFlight(String departureAirport, String arrivalAirport) {
         Set<Flight> results = new HashSet<>();
-        List<Flight> flights = base.stream()
-                .filter(flight1 -> flight1.getDepartureAirport().equals(departureAirport))
+        List<Flight> flightsWithAMatchingDepartureAirport = base.stream()
+                .filter(flight -> flight.getDepartureAirport().equals(departureAirport))
                 .collect(Collectors.toList());
 
-        List<Flight> flights1 = base.stream()
-                .filter(flight1 -> flight1.getArrivalAirport().equals(arrivalAirport))
+        List<Flight> flightsWithAMatchingArrivalAirport = base.stream()
+                .filter(flight -> flight.getArrivalAirport().equals(arrivalAirport))
                 .collect(Collectors.toList());
 
-        for (Flight flight2 : flights1) {
-            for (Flight flight1 : flights) {
-                if(flight1.getArrivalAirport().equals(flight2.getDepartureAirport())){
+        for (Flight flight1 : flightsWithAMatchingDepartureAirport) {
+            for (Flight flight2 : flightsWithAMatchingArrivalAirport) {
+                if (flight1.getArrivalAirport().equals(flight2.getDepartureAirport())) {
                     results.add(flight1);
                     results.add(flight2);
                 }
             }
         }
-
         return results;
     }
 
+    public Set<Flight> findAllFlightsToThisCity(String city) {
+        return base.stream()
+                .filter(flight -> flight.getArrivalAirport().equals(city))
+                .collect(Collectors.toSet());
+    }
+
+    public Set<Flight> findAllFlightsFromThisCity(String city) {
+        return base.stream()
+                .filter(flight -> flight.getDepartureAirport().equals(city))
+                .collect(Collectors.toSet());
+    }
 
     @Override
     public String toString() {
