@@ -25,12 +25,6 @@ public class FlightBase {
         return base;
     }
 
-    public Set<Flight> findDirectFlight(Flight flight) {
-        return base.stream()
-                .filter(flight1 -> flight1.equals(flight))
-                .collect(Collectors.toSet());
-    }
-
     public Set<Flight> findConnectingFlight(String departureAirport, String arrivalAirport) {
         Set<Flight> results = new HashSet<>();
         List<Flight> flightsWithAMatchingDepartureAirport = base.stream()

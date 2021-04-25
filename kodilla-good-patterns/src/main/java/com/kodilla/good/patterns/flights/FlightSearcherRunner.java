@@ -6,7 +6,7 @@ public class FlightSearcherRunner {
 
         FlightBase flightBase = new FlightBase();
         Flight flight = new Flight("Piza", "Werona");
-        System.out.println(flightBase.findDirectFlight(flight));
+
         System.out.println(flightBase.findConnectingFlight("Warszawa", "Waszyngton"));
         System.out.println(flightBase.findAllFlightsToThisCity("Piza"));
         System.out.println(flightBase.findAllFlightsFromThisCity("Paryż"));
