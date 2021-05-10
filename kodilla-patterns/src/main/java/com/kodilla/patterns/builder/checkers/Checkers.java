@@ -24,7 +24,6 @@ public class Checkers {
     }
 
     public static class CheckersBuilder {
-
         private Board board = new Board();
         private String playerOne = "";
         private String playerTwo = "";
