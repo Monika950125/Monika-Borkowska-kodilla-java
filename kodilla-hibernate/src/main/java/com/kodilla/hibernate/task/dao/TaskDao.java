@@ -1,7 +1,8 @@
 package com.kodilla.hibernate.task.dao;
 
 import com.kodilla.hibernate.task.Task;
-import org.springframework.data.jdbc.repository.query.Query;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -20,9 +21,9 @@ public interface TaskDao extends CrudRepository<Task, Integer> {
     @Query
     List<Task> retrieveShortTasks();
 
-    @Query
+    @Query(nativeQuery = true)
     List<Task> retrieveTasksWithEnoughTime();
 
     @Query
-    List<Task> retrieveTaskWithDurationLongerThan(@Param("Duration")int duration);
+    List<Task> retrieveTaskWithDurationLongerThan(@Param("DURATION")int duration);
  }

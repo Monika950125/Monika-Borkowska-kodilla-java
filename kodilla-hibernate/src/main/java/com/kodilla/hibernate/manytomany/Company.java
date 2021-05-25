@@ -1,9 +1,16 @@
 package com.kodilla.hibernate.manytomany;
 
+import com.kodilla.hibernate.task.Task;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+
+@NamedQuery(
+        name = "Company.retrieveCompaniesByFragmentOfTheName",
+        query = "FROM Company WHERE substring(name,1, 3) = :FRAGMENT_OF_THE_NAME"
+)
 
 @Entity
 @Table(name = "COMPANIES")
