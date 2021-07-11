@@ -13,7 +13,7 @@ public class Logger{
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(Watcher.class);
 
         @Before("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder(..))" +
-                "&& args(userId, order) && target(object) ")
+                "&& args(order, userId) && target(object) ")
         public void logEvent(OrderDto order, Long userId, Object object) {
             LOGGER.info("Class: " + order.getClass().getName() + ", Args: " + "UserId " + userId + ", order " + order);
         }
