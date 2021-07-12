@@ -3,18 +3,36 @@ package com.kodilla.patterns2.observer.homework;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TasksQueue implements ObservableTask{
+public class TasksQueue implements ObservableTask {
 
-    private List<Task> tasks;
-    private String studentName;
+    private final List<Task> tasks;
+    private final List<TaskObserver> mentor;
+    private final String studentName;
 
     public TasksQueue(String studentName) {
         tasks = new ArrayList<>();
+        mentor = new ArrayList<>();
         this.studentName = studentName;
     }
 
-    public void addTask(Task task){
+    public String addTask(Task task) {
         tasks.add(task);
+        return sendInformation();
+    }
+
+    @Override
+    public void registerMentor(TaskObserver taskObserver,TasksQueue tasksQueue) {
+        mentor.add(taskObserver);
+        taskObserver.addQueue(tasksQueue);
+    }
+
+    @Override
+    public void removeMentor(TaskObserver taskObserver) {
+        mentor.remove(taskObserver);
+    }
+
+    public String sendInformation() {
+        return "You have a new task to check";
     }
 
     public List<Task> getTasks() {
@@ -23,5 +41,9 @@ public class TasksQueue implements ObservableTask{
 
     public String getStudentName() {
         return studentName;
+    }
+
+    public List<TaskObserver> getMentors() {
+        return mentor;
     }
 }
