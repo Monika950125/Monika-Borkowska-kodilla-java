@@ -1,16 +1,26 @@
 package com.kodilla.hibernate.manytomany;
 
 import com.kodilla.hibernate.task.Task;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedQuery(
-        name = "Company.retrieveCompaniesByFragmentOfTheName",
-        query = "FROM Company WHERE substring(name,1, 3) = :FRAGMENT_OF_THE_NAME"
-)
+@NamedQueries({
+        @NamedQuery(
+                name = "Company.retrieveCompaniesByFragmentOfTheName",
+                query = "FROM Company WHERE substring(name,1, 3) = :FRAGMENT_OF_THE_NAME"
+        ),
+
+        @NamedQuery(
+                name = "Company.retrieveCompaniesByAnyFragmentOfTheName",
+                query = "FROM Company WHERE name LIKE concat('%',:ARG, '%')"
+
+        )
+})
+
 
 @Entity
 @Table(name = "COMPANIES")
