@@ -30,10 +30,8 @@ public class testUpdateBestsellers {
             howMany = rs.getInt("HOW_MANY");
         }
 
-        assertEquals(0, howMany);
-
         rs.close();
         statement.close();
-
+        assertEquals(0, howMany);
     }
 }
