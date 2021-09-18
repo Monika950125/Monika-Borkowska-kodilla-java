@@ -14,6 +14,13 @@ public class FacebookTestingApp {
     public static final String NAME_FIELD = "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[1]/div[1]/div[1]/div/input";
     public static final String LASTNAME_FIELD = "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[1]/div[1]/div[2]/div/div[1]/input";
     public static final String EMAIL_FIELD = "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[2]/div/div[1]/input";
+    public static final String SECOND_EMIAL_FIELD = "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[3]/div/div/div[1]/input";
+    public static final String PASSWORD_FIELD = "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[4]/div/div[1]/input";
+    public static final String BIRTHDAY = "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[5]/div[2]/span/span/select[1]";
+    public static final String MONTH_OF_BIRTH = "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[5]/div[2]/span/span/select[2]";
+    public static final String YEAR_OF_BIRTH = "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[5]/div[2]/span/span/select[3]";
+    public static final String SEX = "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[7]/span/span[1]/label";
+    public static final String REGISTER_BUTTON = "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[10]/button";
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -28,10 +35,10 @@ public class FacebookTestingApp {
         Thread.sleep(2000);
 
         WebElement createAccount = driver.findElement(By.xpath(XPATH_CREATE));
-//        Select selectBoard = new Select(createAccount);
-//        selectBoard.selectByIndex(1);
         createAccount.click();
 
+
+        Thread.sleep(2000);
         WebElement setName = driver.findElement(By.xpath(NAME_FIELD));
         setName.sendKeys("Paulina");
 
@@ -41,5 +48,34 @@ public class FacebookTestingApp {
 
         WebElement setEmail = driver.findElement(By.xpath(EMAIL_FIELD));
         setEmail.sendKeys("paulka22@gmail.com");
+
+        WebElement setEmail_2 = driver.findElement(By.xpath(SECOND_EMIAL_FIELD));
+        setEmail_2.sendKeys("paulka22@gmail.com");
+
+        WebElement setPassword = driver.findElement(By.xpath(PASSWORD_FIELD));
+        setPassword.sendKeys("paulka23@");
+
+
+        WebElement setBirthday = driver.findElement(By.xpath(BIRTHDAY));
+        setBirthday.click();
+        Select selectDay = new Select(setBirthday);
+        selectDay.selectByIndex(26);
+
+        WebElement setMonth = driver.findElement(By.xpath(MONTH_OF_BIRTH));
+        setBirthday.click();
+        Select selectMonth = new Select(setMonth);
+        selectMonth.selectByIndex(5);
+
+        WebElement setYear = driver.findElement(By.xpath(YEAR_OF_BIRTH));
+        setYear.click();
+        Select selectYear = new Select(setYear);
+        selectYear.selectByIndex(25);
+
+        WebElement setSex = driver.findElement(By.xpath(SEX));
+        setSex.click();
+
+        WebElement register = driver.findElement(By.xpath(REGISTER_BUTTON));
+        register.click();
+
     }
 }
